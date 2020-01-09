@@ -1,0 +1,115 @@
+<!--pages/applyForm/applyForm.wxml-->
+<!--pages/set/set.wxml-->
+
+<form bindsubmit="form_submit" report-submit='true'>
+  <van-button type="primary" size="large" >锐华嵌入式实时操作系统版本申请表</van-button>
+<van-cell-group>
+  <van-field
+    value="{{apply_unit}}"
+    placeholder="请输入您的单位"
+    label="申请单位"
+    required
+    left-icon="contact"
+    border="{{ false }}"
+    bind:blur="unitChange"
+  />
+  <van-field
+    value="{{apply_department}}"
+    placeholder="请输入您的部门名称"
+    label="申请部门"
+    required
+    left-icon="contact"
+    border="{{ false }}"
+    bind:blur="departmentChange"
+  />
+  <van-field
+    value="{{ apply_reason }}"
+    label="申请理由"
+    type="textarea"
+    placeholder="请输入申请理由"
+    autosize
+    required
+    left-icon="contact"
+    border="{{ false }}"
+    bind:blur="reasonChange"
+  />
+  <van-field
+    value="{{apply_name}}"
+    placeholder="请输入您的姓名"
+    label="申请人"
+    required
+    left-icon="contact"
+    border="{{ false }}"
+    bind:blur="nameChange"
+  />
+  <van-field
+    value="{{apply_phone}}"
+    placeholder="请输入您的联系电话"
+    label="联系电话"
+    required
+    left-icon="contact"
+    border="{{ false }}"
+    bind:blur="phoneChange"
+    type="number" 
+  />
+  <van-field
+    value="{{apply_mail}}"
+    placeholder="请输入用以接收证书的邮箱"
+    label="邮箱"
+    required
+    left-icon="contact"
+    border="{{ false }}"
+    bind:blur="mailChange"
+  />
+  
+    <van-field
+    value="{{verify_code}}"
+    placeholder="立刻生成注册码，无需审核"
+    label="紧急验证码"
+    left-icon="contact"
+    border="{{ false }}"
+    bind:blur="verifyCodeChange"
+  />
+</van-cell-group>
+
+
+<van-dialog id="van-dialog" />
+
+<!-- <van-button size="large" plain  type="primary">申请版本</van-button>
+
+<van-radio-group value="{{ radio }}" bind:change="onTypeChange" checked-color="#1989fa">
+  <van-radio name="华睿嵌入式实时操作系统">华睿嵌入式实时操作系统</van-radio>
+  <van-radio name="龙芯3A多核V5.1.2">龙芯3A多核V5.1.2</van-radio>
+  <van-radio name="ARM嵌入式实时操作系统V5.1.2-ARM3IN1">ARM嵌入式实时操作系统V5.1.2-ARM3IN1</van-radio>
+  <van-radio name="PPC嵌入式实时操作系统V5.1-PPC6IN1">PPC嵌入式实时操作系统V5.1-PPC6IN1</van-radio>
+  <van-radio name="DSP嵌入式实时操作系统V2.1">DSP嵌入式实时操作系统V2.1</van-radio>
+</van-radio-group>
+
+<van-button type="primary" plain size="large" >版本类型</van-button>
+
+<van-radio-group value="{{ version_radio }}" bind:change="onVersionChange" checked-color="#1989fa">
+  <van-radio name="正式版">正式版</van-radio>
+  <van-radio name="试用版（360天）">试用版（360天）</van-radio>
+  <van-radio name="试用版（90天）">试用版（90天）</van-radio>
+
+</van-radio-group> -->
+
+<van-button type="primary" plain size="large" >一个请求码对应一个注册码，一次最多申请3个</van-button>
+ <block wx:for="{{lists}}" wx:key="{{index}}">
+        <van-field class="phone_div"  value="{{lists[index].value}}" name="phone" label="请求码" placeholder="由您本地电脑生成"             bindinput="bindPhoneDataChang{{index}}" />
+        <van-button class="scan" plain type="default"  bind:click="getScancode{{index}}" >扫一扫</van-button>
+        <!-- <button bindtap='getScancode{{index}}'>扫一扫</button> -->
+</block>
+<view id="pm">
+      <van-button id="p" class='="send_code_div"' type="" disabled="{{disabled}}" bind:click="onAddPhone">
+        <text class='code_text'>+</text>
+      </van-button>
+      <van-button id="m" class='="send_code_div"' type="" disabled="{{disabled}}" bind:click="delList">
+        <text class='code_text'>-</text>
+      </van-button>
+</view>
+  <!-- <van-button type="primary" plain size="large" >紧急验证码</van-button>
+  <van-field label="请求码"     value="{{verify_code}}"
+     placeholder="若有验证码，立刻生成注册码，无需审核"  bind:blur="verifyCodeChange" /> -->
+  <button form-type="submit" class='formid'>提交</button>
+</form>

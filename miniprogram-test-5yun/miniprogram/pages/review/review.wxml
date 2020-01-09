@@ -1,0 +1,42 @@
+<!--pages/review/review.wxml-->
+
+<block wx:for="{{records}}" wx:key="unique">
+<i-card title="申请表" extra="{{item.license}}" >
+    <!-- <view slot="content">申请版本：{{item.radio}}</view>
+    <view slot="content">版本类型：{{item.version_radio}}</view> -->
+    <view slot="content">申请个数：{{item.license_num}}</view>
+    <view slot="content">请求码：{{item.apply_license}}</view>
+    <view slot="content">申请理由：{{item.apply_reason}}</view>
+    <view slot="content">申请人：{{item.apply_name}}</view>
+    <view slot="content">申请单位：{{item.apply_unit}}</view>
+    <view slot="content">部门名称：{{item.apply_department}}</view>
+    <view slot="content">电话：{{item.apply_phone}}</view>
+    <view slot="content">邮件：{{item.apply_mail}}</view>
+    <view slot="footer">申请时间：{{item.apply_time}}</view>
+</i-card>
+
+  <van-button type="primary" round  bind:click="apply_success">审核通过</van-button>
+  <van-button type="primary" round  bind:click="generateCode">生成注册码</van-button>
+  <van-field
+    label="注册码"
+    value="{{ apply_success_value }}"
+    placeholder="请输入注册码"
+    border="{{ true }}"
+    bind:input="onApplySuccess"
+    class="license"
+  />
+  <van-button round type="danger" bind:click="apply_fail">未能通过</van-button>
+    <van-field
+    label="拒绝理由"
+    value="{{ apply_fail_value }}"
+    placeholder="请输入审核未能通过理由"
+    border="{{ true }}"
+    bind:input="onApplyFail"
+    class="license"
+  />
+  <view>还剩下{{review_num -1}}条申请</view>
+</block>
+<block wx:if="{{records.length == 0}}">
+  <view>没有申请记录了</view>
+</block>
+

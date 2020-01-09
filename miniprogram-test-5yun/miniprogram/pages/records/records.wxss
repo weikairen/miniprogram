@@ -1,0 +1,10 @@
+/* pages/records/records.wxss */
+
+.admin{
+  overflow:hidden; 
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  font-size: 20rpx;
+  opacity: 0.2;
+}

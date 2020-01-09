@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "i-card": "../../dist/icard/index",
+    "van-field": "../../dist/field/index",
+    "van-button": "../../dist/button/index"
+  }
+}

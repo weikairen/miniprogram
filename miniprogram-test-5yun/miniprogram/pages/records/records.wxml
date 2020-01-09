@@ -1,0 +1,13 @@
+<!--pages/records/records.wxml-->
+<block wx:for="{{records}}" wx:key="unique">
+<i-card title="记录" full="true" extra="{{item.license}}" >
+    <!-- <view slot="content">申请版本：{{item.radio}}</view>
+    <view slot="content">版本类型：{{item.version_radio}}</view> -->
+    <view slot="content">请求码：{{item.apply_license}}</view>
+    <view slot="content">注册码：{{item.reply_license}}</view>
+    <view slot="footer">申请时间：{{item.apply_time}}</view>
+</i-card>
+</block>
+
+
+<button  class="admin" bindtap='goToReview'>CopyRight@中电科32所   管理员后台</button>
